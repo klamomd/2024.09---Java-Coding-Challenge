@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "c654acb8-7cd9-4bcc-8482-0f6b496acd39",
+		"name": "Klamo Code Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38130889"
+	},
+	"item": [
+		{
+			"name": "Send 5 events with random data",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const moment = require('moment');\r",
+							"pm.globals.set(\"nowUnixTimestampMs1\", moment().valueOf());\r",
+							"pm.globals.set(\"nowUnixTimestampMs2\", moment().valueOf());\r",
+							"pm.globals.set(\"nowUnixTimestampMs3\", moment().valueOf());\r",
+							"pm.globals.set(\"nowUnixTimestampMs4\", moment().valueOf());\r",
+							"pm.globals.set(\"nowUnixTimestampMs5\", moment().valueOf());\r",
+							"\r",
+							"pm.globals.set(\"randomX1\", Math.random());\r",
+							"pm.globals.set(\"randomX2\", Math.random());\r",
+							"pm.globals.set(\"randomX3\", Math.random());\r",
+							"pm.globals.set(\"randomX4\", Math.random());\r",
+							"pm.globals.set(\"randomX5\", Math.random());\r",
+							"\r",
+							"pm.globals.set(\"randomY1\", getRandomY());\r",
+							"pm.globals.set(\"randomY2\", getRandomY());\r",
+							"pm.globals.set(\"randomY3\", getRandomY());\r",
+							"pm.globals.set(\"randomY4\", getRandomY());\r",
+							"pm.globals.set(\"randomY5\", getRandomY());\r",
+							"\r",
+							"function getRandomY() {\r",
+							"    let max = 1073741824;\r",
+							"    let result = Math.floor(Math.random() * max) + (max - 1);\r",
+							"    return result;\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{nowUnixTimestampMs1}},{{randomX1}},{{randomY1}}\r\n{{nowUnixTimestampMs2}},{{randomX2}},{{randomY2}}\r\n{{nowUnixTimestampMs3}},{{randomX3}},{{randomY3}}\r\n{{nowUnixTimestampMs4}},{{randomX4}},{{randomY4}}\r\n{{nowUnixTimestampMs5}},{{randomX5}},{{randomY5}}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send 5:1 valid:invalid",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const moment = require('moment');\r",
+							"pm.globals.set(\"nowUnixTimestampMs1\", moment().valueOf());\r",
+							"pm.globals.set(\"nowUnixTimestampMs2\", moment().valueOf());\r",
+							"pm.globals.set(\"nowUnixTimestampMs3\", moment().valueOf());\r",
+							"pm.globals.set(\"nowUnixTimestampMs4\", moment().valueOf());\r",
+							"pm.globals.set(\"nowUnixTimestampMs5\", moment().valueOf());\r",
+							"\r",
+							"pm.globals.set(\"randomX1\", Math.random());\r",
+							"pm.globals.set(\"randomX2\", Math.random());\r",
+							"pm.globals.set(\"randomX3\", Math.random());\r",
+							"pm.globals.set(\"randomX4\", Math.random());\r",
+							"pm.globals.set(\"randomX5\", Math.random());\r",
+							"\r",
+							"pm.globals.set(\"randomY1\", getRandomY());\r",
+							"pm.globals.set(\"randomY2\", getRandomY());\r",
+							"pm.globals.set(\"randomY3\", getRandomY());\r",
+							"pm.globals.set(\"randomY4\", getRandomY());\r",
+							"pm.globals.set(\"randomY5\", getRandomY());\r",
+							"\r",
+							"function getRandomY() {\r",
+							"    let max = 1073741824;\r",
+							"    let result = Math.floor(Math.random() * max) + (max - 1);\r",
+							"    return result;\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{nowUnixTimestampMs1}},{{randomX1}},{{randomY1}}\r\n{{nowUnixTimestampMs2}},{{randomX2}},{{randomY2}}\r\n{{nowUnixTimestampMs3}},{{randomX3}},{{randomY3}}\r\n{{nowUnixTimestampMs4}},{{randomX4}},{{randomY4}}\r\n{{nowUnixTimestampMs5}},{{randomX5}},{{randomY5}}\r\nandonebadevent,0.02432,1932309453",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get stats",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send blank body",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " \r\n \r\n  \r\n   ",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "☕🍵",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/teapot",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teapot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate and Send 5 Valid Events, Logging Stats to Console",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// NOTE: if more events are desired, update total here, but ALSO update Request Body and MANUALLY add in the extra placeholders.\r",
+							"let total = 5;\r",
+							"let sumX = 0;\r",
+							"let sumY = 0;\r",
+							"\r",
+							"for (let i = 0; i < total; i++) {\r",
+							"    let timestamp = new Date().getTime();\r",
+							"    let x = Math.random();\r",
+							"    let y = getRandomY();\r",
+							"    sumX += x;\r",
+							"    sumY += y;\r",
+							"\r",
+							"    // Get names for variables in response body.\r",
+							"    let globalTimestampName = \"nowUnixTimestampMs\" + (i+1);\r",
+							"    let globalXName = \"randomX\" + (i+1);\r",
+							"    let globalYName = \"randomY\" + (i+1);\r",
+							"    \r",
+							"    // Assign values to variables\r",
+							"    pm.globals.set(globalTimestampName, timestamp);\r",
+							"    pm.globals.set(globalXName, x);\r",
+							"    pm.globals.set(globalYName, y);\r",
+							"\r",
+							"    console.log(\"Generated and stored event: [ts: \" + timestamp + \", x: \" + x + \", y: \" + y);\r",
+							"}\r",
+							"\r",
+							"// Calculate after-the-fact\r",
+							"let avgX = sumX / total;\r",
+							"let avgY = sumY / total;\r",
+							"\r",
+							"let statsString = total + \",\" + sumX + \",\" + avgX + \",\" + sumY + \",\" + avgY;\r",
+							"console.log(\"Final stats expected to be: \" + statsString)\r",
+							"\r",
+							"// Get a number from [1073741823..2147483647].\r",
+							"function getRandomY() {\r",
+							"    let randMax = 1073741824;\r",
+							"    \r",
+							"    let result = Math.floor(Math.random() * randMax) + (randMax - 1);\r",
+							"    return result;\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{nowUnixTimestampMs1}},{{randomX1}},{{randomY1}}\r\n{{nowUnixTimestampMs2}},{{randomX2}},{{randomY2}}\r\n{{nowUnixTimestampMs3}},{{randomX3}},{{randomY3}}\r\n{{nowUnixTimestampMs4}},{{randomX4}},{{randomY4}}\r\n{{nowUnixTimestampMs5}},{{randomX5}},{{randomY5}}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"event"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

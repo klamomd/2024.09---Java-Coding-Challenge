@@ -1,0 +1,5 @@
+This is my solution for a coding challenge I completed as part of the interview process for a certain company.
+
+Ultimately I was not selected for the role, but I think this is a good demonstration of my skillset and I do not want the effort to be wasted, so I've redacted any references to the company and am uploading it to my Github profile. I've also removed the `producer.jar` test file that was provided by the company in question, but the Postman collection I've included should be sufficient to test the code.
+
+I apologize if I broke anything by updating names/references - I believe it should all still be consistent and functional, but my IntelliJ Idea trial has expired and I don't care to purchase a license nor go through validating this in another IDE just on the off-chance that someone actually chooses to build and run it.
